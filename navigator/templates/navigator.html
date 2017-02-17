@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Github Navigator</title>
+</head>
+<body>
+    <form method="GET">
+        <input type="text" name="search_term" id="id_search_term">
+        <button>Search</button>
+    </form>
+
+    <p>Enter a search term on the input above and click the button to navigate Github</p>
+    {% if response_error %}
+        <p>There was an error with your request. Please try again.</p>
+    {% else %}
+        {% if repositories %}
+            <h1>{{ search_term }}</h1>
+            {% for repository in repositories %}
+                <div class="div-repository">
+                    <h2>{{ forloop.counter }}. {{ repository.name }}</h2>
+                    <h3> Created {{ repository.created_at }}</h3>
+                    <a href="{{ repository.owner.url}}"><img src="{{ repository.owner.avatar_url }}" alt="avatar" height="42" width="42"/></a>
+                    {{ repository.owner.login }}
+                    <h3>LastCommit</h3>
+                    {{ repository.last_commit_sha }} {{ repository.last_commit_message }} {{ repository.last_commit_author }}
+                    <hr/>            
+                </div>
+            {% endfor %}       
+        {% endif %}
+    {% endif %}
+</body>
+</html>
