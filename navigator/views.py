@@ -19,7 +19,7 @@ def navigator(request):
             # of requests per hour you can make from 60 to 5000
             repositories_res = requests.get('https://api.github.com/search/repositories', 
                                             params={'q': search_term},
-                                            auth=('github_username', 'github_password'))
+                                            auth=('felipegalvao', '!Fmg34567'))
             # Uncomment the lines below and comment the ones above to make requests without 
             # authentication
             # repositories_res = requests.get('https://api.github.com/search/repositories', 
@@ -35,7 +35,7 @@ def navigator(request):
                     commits_res = requests.get('https://api.github.com/repos/' + 
                                                repository['owner']['login'] + '/' + 
                                                repository['name'] + '/commits',
-                                               auth=('github_username', 'github_password'))
+                                               auth=('felipegalvao', '!Fmg34567'))
 
                     # Uncomment the lines below and comment the lines above to make the request 
                     # without authentication
